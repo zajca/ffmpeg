@@ -28,11 +28,3 @@ COPY          run.sh /tmp/run.sh
 
 # See https://github.com/jrottenberg/ffmpeg/blob/master/run.sh
 RUN           bash /tmp/run.sh
-
-
-
-
-
-
-CMD           ["--help"]
-ENTRYPOINT    ["ffmpeg"]

@@ -5,8 +5,8 @@ set -euo pipefail
 
 
 
-
-yum install -y autoconf automake gcc gcc-c++ git libtool make nasm zlib-devel tar xz
+rpm -Uvh http://download.fedoraproject.org/pub/epel/6/i386/epel-release-6-8.noarch.rpm
+yum install -y autoconf automake gcc gcc-c++ git libtool make nasm zlib-devel tar xz npm ImageMagick
 
 
 # yasm
@@ -100,6 +100,7 @@ DIR=$(mktemp -d) && cd ${DIR} && \
               make install && \
               rm -rf ${DIR}
 
+npm install -g gulp
 yum remove -y autoconf automake gcc gcc-c++ git libtool nasm  zlib-devel tar xz perl libgomp libstdc++-devel
 yum clean all
 rm -rf /var/lib/yum/yumdb/*
