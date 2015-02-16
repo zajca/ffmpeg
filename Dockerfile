@@ -1,30 +1,13 @@
-# ffmpeg
-#
-# VERSION               2.4.6-1
-#
-# From https://trac.ffmpeg.org/wiki/CompilationGuide/Centos
-#
-FROM          centos:centos6
-MAINTAINER    Julien Rottenberg <julien@rottenberg.info>
+FROM          jrottenberg/ffmpeg
+MAINTAINER    Martin Zajíc <zajca@zajca.cz>
 
+COPY run.sh /tmp/run.sh
+RUN bash /tmp/run.sh
 
+COPY . /src
 
+RUN mkdir -p /root/.pm2;touch /root/.pm2/pm2.log;
 
-
-ENV           FFMPEG_VERSION  2.4.6
-ENV           MPLAYER_VERSION 1.1.1
-ENV           YASM_VERSION    1.3.0
-ENV           LAME_VERSION    3.99.5
-ENV           FAAC_VERSION    1.28
-ENV           XVID_VERSION    1.3.3
-ENV           FDKAAC_VERSION  0.1.3
-ENV           SRC             /usr/local
-ENV           LD_LIBRARY_PATH ${SRC}/lib
-ENV           PKG_CONFIG_PATH ${SRC}/lib/pkgconfig
-
-
-
-COPY          run.sh /tmp/run.sh
-
-# See https://github.com/jrottenberg/ffmpeg/blob/master/run.sh
-RUN           bash /tmp/run.sh
+#RESET ENTRYPOINT
+ENTRYPOINT ["pm2"]
+CMD ["start", "--no-daemon"]

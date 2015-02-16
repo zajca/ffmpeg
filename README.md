@@ -1,5 +1,5 @@
-FFMPEG for Docker on Centos6 with NPM ImageMagic and GULP for NODEJS video projects
-===================================================================================
+FFMPEG for Docker on Centos6 with NPM ImageMagic and GULP,PM2,coffee-script for NODEJS video projects
+=====================================================================================================
 based on:
 https://github.com/jrottenberg/ffmpeg
 
@@ -11,7 +11,7 @@ COPY . /src
 
 RUN cd /src;npm install; gulp prod;
 
-EXPOSE  4000
+EXPOSE  80
 
-CMD ["npm start"]
+CMD ["-x","/src/index.coffee"]
 ```
