@@ -4,8 +4,6 @@ MAINTAINER    Martin Zajíc <zajca@zajca.cz>
 COPY run.sh /tmp/run.sh
 RUN bash /tmp/run.sh
 
-COPY . /src
-
 RUN mkdir -p /root/.pm2;touch /root/.pm2/pm2.log;
 
 #RESET ENTRYPOINT
